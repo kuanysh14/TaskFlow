@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class WorkspaceListComponent implements OnInit {
   workspaces: any[] = [];
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(public apiService: ApiService, public router: Router) {}
 
   ngOnInit() {
     this.apiService.getWorkspaces().subscribe(data => {
