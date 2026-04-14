@@ -1,0 +1,18 @@
+<div class="workspace-container">
+  <h3>Your Workspaces</h3>
+
+  @if (workspaces.length > 0) {
+    <div class="list">
+      @for (ws of workspaces; track ws.id) {
+        <div class="card" (click)="viewTasks(ws.id)">
+          <h4>{{ ws.name }}</h4>
+          <p>{{ ws.description }}</p>
+        </div>
+      }
+    </div>
+  } @else {
+    <p>Loading workspaces...</p>
+  }
+
+  <button (click)="router.navigate(['/login'])">Logout</button>
+</div>
