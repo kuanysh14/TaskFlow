@@ -16,4 +16,7 @@ It allows users to organize tasks into workspaces, categorize them with tags, an
 - Responsive UI with Angular Material/CSS
 
 ## Group Members
-- [Твоё Имя] - [Твой ID]
+- Nurbay Meyrzhan
+- Alzhanbay Alibi
+- Olzhabay Kuanysh
+  
