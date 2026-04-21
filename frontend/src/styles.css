@@ -8,3 +8,27 @@ body {
   align-items: center;
   min-height: 100vh;
 }
+
+
+@keyframes skeleton-loading {
+  0% { background-color: #f0f0f0; }
+  100% { background-color: #e0e0e0; }
+}
+
+.skeleton-box {
+  display: inline-block;
+  height: 20px;
+  border-radius: 4px;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+.skeleton-title {
+  width: 60%;
+  height: 24px;
+  margin-bottom: 15px;
+}
+
+.skeleton-text {
+  width: 90%;
+  height: 16px;
+}
