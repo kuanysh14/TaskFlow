@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from '../../services/api';
 
 @Component({
   selector: 'app-login',
@@ -13,14 +14,12 @@ export class LoginComponent {
   username = '';
   password = '';
 
-  constructor(private router: Router) {}
+  constructor(public apiService: ApiService, private router: Router) {}
 
   onLogin() {
-    if (this.username && this.password) {
-      console.log('Login attempt:', this.username);
-      this.router.navigate(['/workspaces']);
-    } else {
-      alert('Fill the fields!');
-    }
-  }
+  this.apiService.login({ username: this.username, password: this.password }).subscribe({
+    next: () => this.router.navigate(['/workspaces']),
+    error: () => alert('Неверный логин или пароль!')
+  });
+}
 }

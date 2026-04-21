@@ -1,18 +1,19 @@
-<div class="workspace-container">
-  <h3>Your Workspaces</h3>
+<div class="container">
+  <h2>Your Workspaces</h2>
 
-  @if (workspaces.length > 0) {
-    <div class="list">
-      @for (ws of workspaces; track ws.id) {
-        <div class="card" (click)="viewTasks(ws.id)">
-          <h4>{{ ws.name }}</h4>
-          <p>{{ ws.description }}</p>
-        </div>
-      }
-    </div>
-  } @else {
-    <p>Loading workspaces...</p>
-  }
+  <p>Total: {{ workspaces.length }}</p>
 
-  <button (click)="router.navigate(['/login'])">Logout</button>
+  <div class="workspace-grid">
+    @for (ws of workspaces; track ws.id) {
+      <div class="card" (click)="viewTasks(ws.id)">
+        <h3>{{ ws.name }}</h3>
+        <p>{{ ws.description }}</p>
+      </div>
+    } @empty {
+      <p>No workspaces found. Add some in the Django Admin!</p>
+    }
+  </div>
+
+
+  <button (click)="logout()">Logout</button>
 </div>
