@@ -2,11 +2,12 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ApiService } from '../../services/api';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-workspace-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './workspace-list.html',
   styleUrl: './workspace-list.css'
 })
@@ -38,4 +39,16 @@ export class WorkspaceListComponent implements OnInit {
     localStorage.removeItem('access_token');
     this.router.navigate(['/login']);
   }
+
+  searchText: string = '';
+
+  get filteredWorkspaces() {
+    if (!this.workspaces) return [];
+    return this.workspaces.filter(ws =>
+      ws.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      ws.description.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
 }
+
+
